@@ -3904,7 +3904,19 @@ insert into Version (CleVersion,Version) values (4,'24.10.3.1')
 End
 If Not Exists(select * from Version where CleVersion=5)
 Begin
-insert into Version (CleVersion,Version) values (4,'24.10.4.1')
+insert into Version (CleVersion,Version) values (5,'24.10.4.1')
+End
+If Not Exists(select * from Version where CleVersion=6)
+Begin
+insert into Version (CleVersion,Version) values (6,'24.10.4.3')
+End
+If Not Exists(select * from Version where CleVersion=7)
+Begin
+insert into Version (CleVersion,Version) values (7,'24.10.4.4')
+End
+If Not Exists(select * from Version where CleVersion=8)
+Begin
+insert into Version (CleVersion,Version) values (8,'24.10.4.5')
 End
 GO
 SET IDENTITY_INSERT [dbo].[Version] OFF 
@@ -6895,7 +6907,7 @@ SELECT      dbo.Effet.CleEffet, dbo.Effet.CleTypeEffet, dbo.Effet.CleTiers, dbo.
                         dbo.Effet.CleUserModify, dbo.Effet.CleEtatEffet, dbo.Effet.TotalSHP, dbo.Effet.TotalPPA, dbo.Effet.CleTransaction, dbo.Effet.CleTVA, dbo.Effet.bCagnote, dbo.Effet.MontantCagnote, 
                         dbo.Effet.PayementCagnote, dbo.Effet.RemiseCagnote, dbo.Effet.RemisePourcent2, dbo.Effet.Remise2, dbo.Effet.bRemise, dbo.Effet.bRemise2, dbo.Effet.Invisible, dbo.Effet.MontantBrute, 
                         dbo.Effet.bPsycho, dbo.Effet.bControle, dbo.Effet.PayementRemise, dbo.Effet.PayementRemise2, dbo.Effet.PayementAssocie AS trs, dbo.Effet.bUseTauxRemise, dbo.Effet.RemiseApp, 
-                        dbo.Effet.RemiseAvf,dbo.Effet.bUsePrimeCA,dbo.Effet.bUsePrimePayement
+                        dbo.Effet.RemiseAvf,dbo.Effet.bUsePrimeCA,dbo.Effet.bUsePrimePayement, dbo.Effet.CleUserPayement
 FROM          dbo.Effet
 WHERE      (dbo.Effet.CleTypeEffet IN (5, 6, 7, 8))
 UNION ALL
@@ -6906,7 +6918,7 @@ SELECT      dbo.EffetCharge.CleEffetCharge, dbo.EffetCharge.CleTypeEffetCharge, 
                         dbo.EffetCharge.CleEtatEffetCharge, 0 AS TotalSHP, 0 AS TotalPPA, 0 AS CleTransaction, dbo.EffetCharge.CleTVA, CAST(0 AS bit) AS bCagnote, 0 AS MontantCagnote, 0 AS PayementCagnote, 
                         0 AS RemiseCagnote, 0 AS RemisePourcent2, 0 AS Remise2, CAST(0 AS bit) AS bRemise, CAST(0 AS bit) AS bRemise2, dbo.EffetCharge.Invisible, dbo.EffetCharge.MontantHT AS MontantBrute, 
                         CAST(0 AS bit) AS bPsycho, CAST(0 AS bit) AS bControle, 0 AS PayementRemise, 0 AS PayementRemise2, dbo.EffetCharge.PayementAssocie AS trs, dbo.EffetCharge.bUseTauxRemise, 
-                        0 AS RemiseApp, 0 AS RemiseAvf,dbo.EffetCharge.bUsePrimeCA,dbo.EffetCharge.bUsePrimePayement
+                        0 AS RemiseApp, 0 AS RemiseAvf,dbo.EffetCharge.bUsePrimeCA,dbo.EffetCharge.bUsePrimePayement, 0 as cup
 FROM          dbo.EffetCharge INNER JOIN
                         dbo.CategorieCharge ON dbo.EffetCharge.CleCategorieCharge = dbo.CategorieCharge.CleCategorieCharge
 WHERE      (dbo.CategorieCharge.bUseJournal = 1)
