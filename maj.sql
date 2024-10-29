@@ -3922,6 +3922,10 @@ If Not Exists(select * from Version where CleVersion=9)
 Begin
 insert into Version (CleVersion,Version) values (9,'24.10.4.6')
 End
+If Not Exists(select * from Version where CleVersion=9)
+Begin
+insert into Version (CleVersion,Version) values (10,'24.10.4.7')
+End
 GO
 SET IDENTITY_INSERT [dbo].[Version] OFF 
 GO
